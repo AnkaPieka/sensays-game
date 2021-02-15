@@ -39,7 +39,16 @@ function gameStart() {
 gameStart();
 
 //Suite d'ordres donnés par Senseï :
-let orderLevel1 = [["Shiuto"], ["Shiuto", "OiTsuki"], ["Shiuto", "OiTsuki", "OiTsuki"], ["Shiuto", "OiTsuki", "OiTsuki", "Shiuto"]];
+let orderLevel1 = [
+  ["Shiuto"], 
+  ["Shiuto", "OiTsuki"], 
+  ["Shiuto", "OiTsuki", "OiTsuki"], 
+  ["Shiuto", "OiTsuki", "OiTsuki", "Shiuto"],
+  ["Shiuto", "OiTsuki", "OiTsuki", "Shiuto", "OiTsuki"],
+  ["Shiuto", "OiTsuki", "OiTsuki", "Shiuto", "OiTsuki", "Shiuto"],
+  ["Shiuto", "OiTsuki", "OiTsuki", "Shiuto", "OiTsuki", "Shiuto", "OiTsuki"],
+  ["Shiuto", "OiTsuki", "OiTsuki", "Shiuto", "OiTsuki", "Shiuto", "OiTsuki", "Shiuto"],
+];
 
 let playerArray = [];
 
@@ -70,6 +79,7 @@ function gameLogic() {
 function wrongCmd() {
   movement.innerHTML = "NO !";
   bubble.classList.add("wrong");
+  playerArray = [];
   // setTimeout(function () {
   //   endScreen.classList.remove("hidden");
   //   endScreen.classList.add("active");
@@ -79,7 +89,8 @@ function wrongCmd() {
 function rightCmd() {
   bubble.classList.remove("wrong");
   movement.innerHTML = "Well done";
-  count.innerHTML = `${count.innerHTML + 1}`;
+  count.innerHTML = `${+1}`;
+  playerArray = [];
   increaseIndex();
   setTimeout(function () {
     gameLogic();
@@ -89,38 +100,45 @@ function rightCmd() {
 //Pushing the entered value in players array
 
 function playersTurn() {
-  document.addEventListener("keydown", (press) => {
-    const keyName = press.key;
-    if (keyName === "ArrowRight") {
-      playerArray.push("Shiuto");
-    } else if (keyName === "ArrowUp") {
-      playerArray.push("OiTsuki");
-    } else if (keyName === "ArrowLeft") {
-      playerArray.push("MawashiGeri");
-    } else if (keyName === "ArrowDown") {
-      playerArray.push("MaeGeri");
-    } else {
-      console.log("Not even close...");
-    }
-  });
+
   
   setTimeout(function () {
     compareOrders();
-  }, 5000);
+  }, 4000);
 }
 
+
 //Comparing player's value with orders array
+
+function keyHandler (press){
+  const keyName = press.key;
+  if (keyName === "ArrowRight") {
+    playerArray.push("Shiuto");
+    
+  } else if (keyName === "ArrowUp") {
+    playerArray.push("OiTsuki");
+    
+  } else if (keyName === "ArrowLeft") {
+    playerArray.push("MawashiGeri");
+    
+  } else if (keyName === "ArrowDown") {
+    playerArray.push("MaeGeri");
+    
+  } else {
+    console.log("Not even close...");
+  };
+  console.log(playerArray); 
+};
+
+document.addEventListener("keydown", keyHandler);
+
 
 // utiliser loop OU HOF pour gérer ce point ... quand tu as du temps
 function compareOrders() {
   console.log(playerArray);
   if (JSON.stringify(playerArray) === JSON.stringify(serieLign)) {
-    // console.log(playerArray);
     rightCmd();
-    playerArray = [];
   } else {
-    // console.log(playerArray);
     wrongCmd();
-    playerArray = [];
   }
 }
