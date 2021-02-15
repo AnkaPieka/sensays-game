@@ -7,7 +7,7 @@ let endScreen = document.querySelector("#end-screen");
 
 //Shiuto = right arrow;
 // MaeGeri = arrow down;
-// Oitsuki = arrow up
+// Oitsuki = arrow up;
 // MawashiGeri = arrow left;
 
 //Essai de liaison keyboard/HTML
@@ -39,20 +39,27 @@ function gameStart() {
 gameStart();
 
 //Suite d'ordres donnés par Senseï :
-let orderLevel1 = [["Shiuto"], ["Shiuto", "OiTsuki"]];
+let orderLevel1 = [["Shiuto"], ["Shiuto", "OiTsuki"], ["Shiuto", "OiTsuki", "OiTsuki"], ["Shiuto", "OiTsuki", "OiTsuki", "Shiuto"]];
 
 let playerArray = [];
 
-let serieLign = orderLevel1[i];
+let currentIndex = 0;
+let serieLign = orderLevel1[currentIndex];
+
+//Function to increase index at each turn
+
+function increaseIndex() {
+  currentIndex++;
+  serieLign = orderLevel1[currentIndex];
+}
 
 //Function game logic
 
 function gameLogic() {
-  if (count.innerHTML = '0') {
-    movement.innerHTML = `${serieLign} !`;
+  movement.innerHTML = `${serieLign} !`;
 
   setTimeout(function () {
-    movement.innerHTML = `Your turn !`;
+    movement.innerHTML = `Your turn`;
   }, 2000);
 
   playersTurn();
@@ -73,6 +80,7 @@ function rightCmd() {
   bubble.classList.remove("wrong");
   movement.innerHTML = "Well done";
   count.innerHTML = `${count.innerHTML + 1}`;
+  increaseIndex();
   setTimeout(function () {
     gameLogic();
   }, 2000);
@@ -91,9 +99,11 @@ function playersTurn() {
       playerArray.push("MawashiGeri");
     } else if (keyName === "ArrowDown") {
       playerArray.push("MaeGeri");
+    } else {
+      console.log("Not even close...");
     }
   });
-
+  
   setTimeout(function () {
     compareOrders();
   }, 5000);
@@ -103,11 +113,13 @@ function playersTurn() {
 
 // utiliser loop OU HOF pour gérer ce point ... quand tu as du temps
 function compareOrders() {
+  console.log(playerArray);
   if (JSON.stringify(playerArray) === JSON.stringify(serieLign)) {
+    // console.log(playerArray);
     rightCmd();
-    console.log(serieLign);
     playerArray = [];
   } else {
+    // console.log(playerArray);
     wrongCmd();
     playerArray = [];
   }
