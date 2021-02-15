@@ -1,0 +1,88 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.movement.img {
+    height: 10em;
+}
+
+.movement.name {
+    font-size: 25px;
+}
+
+.bubble {
+    border : 2px solid black;
+    height: 500px;
+    width: 500px;
+    margin: 15px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#count {
+    font-size: 2em;
+}
+
+.wrong {
+    border : 2px solid red;
+    color:white;
+    background-color: black;
+    height: 500px;
+    width: 500px;
+    margin: 15px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: -1;
+}
+
+.back {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-self: flex-end;
+    align-content: flex-end;
+}
+
+#end-screen.hidden {
+    position:absolute;
+    visibility: hidden;
+}
+
+.active {
+    z-index: 1;
+    position: absolute;
+    background-color: rgba(0,0,0,0.8);
+    color: red;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 3.5em;
+    height: 100%;
+    width: 100%;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+}
+
+.try-again {
+    background-color: white;
+    color: black;
+    border: 2px solid red;
+    height: 4.5em;
+    width: 4.5em;
+    border-radius: 50%;
+    padding: 10px;
+}
