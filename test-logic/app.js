@@ -30,7 +30,7 @@ function gameStart() {
       console.log("Game has started");
       setTimeout(function () {
         gameLogic();
-      }, 150);
+      }, 200);
     }
   };
 }
@@ -45,7 +45,15 @@ let orderLevel1 = [
   // [" Shiuto", " OiTsuki", " OiTsuki", " Shiuto"],
   // [" Shiuto", " OiTsuki", " OiTsuki", " Shiuto", " OiTsuki"],
   // [" Shiuto", " OiTsuki", " OiTsuki", " Shiuto", " OiTsuki", " Shiuto"],
-  // [" Shiuto", " OiTsuki", " OiTsuki", " Shiuto", " OiTsuki", " Shiuto", "OiTsuki"],
+  // [
+  //   " Shiuto",
+  //   " OiTsuki",
+  //   " OiTsuki",
+  //   " Shiuto",
+  //   " OiTsuki",
+  //   " Shiuto",
+  //   " OiTsuki",
+  // ],
   // [
   //   " Shiuto",
   //   " OiTsuki",
@@ -109,14 +117,25 @@ let orderLine = array[currentIndex];
 //Level buttons
 
 function resetBubble() {
+  clearTimeout(playersTurnTimeout);
+  clearTimeout(openEndScreen);
   bubble.classList.remove("wrong");
+  playerArray = [];
+  currentIndex = 0;
   movement.innerHTML = "Press ENTER when you're ready to show your skills.";
   score = 0;
   count.innerHTML = `${Number(score)}`;
+  console.log(playerArray);
 }
 
 easyMode.addEventListener("click", () => {
   console.log("1!");
+  easyMode.classList.toggle('chosen-easy');
+  easyMode.classList.remove('heartbeat');
+  mediumMode.disabled = true;
+  hardMode.disabled = true;
+  mediumMode.classList.remove('chosen-medium', 'heartbeat');
+  hardMode.classList.remove('chosen-hard', 'heartbeat');
   array = orderLevel1;
   orderLine = array[currentIndex];
   resetBubble();
@@ -124,6 +143,12 @@ easyMode.addEventListener("click", () => {
 
 mediumMode.addEventListener("click", () => {
   console.log("2!");
+  mediumMode.classList.toggle('chosen-medium');
+  mediumMode.classList.remove('heartbeat');
+  easyMode.disabled = true;
+  hardMode.disabled = true;
+  easyMode.classList.remove('chosen-easy', 'heartbeat');
+  hardMode.classList.remove('chosen-hard', 'heartbeat');
   array = orderLevel2;
   orderLine = array[currentIndex];
   resetBubble();
@@ -131,12 +156,24 @@ mediumMode.addEventListener("click", () => {
 
 hardMode.addEventListener("click", () => {
   console.log("3!");
+  hardMode.classList.toggle('chosen-hard');
+  hardMode.classList.remove('heartbeat');
+  easyMode.disabled = true;
+  mediumMode.disabled = true;
+  easyMode.classList.remove('chosen-easy', 'heartbeat');
+  mediumMode.classList.remove('chosen-medium', 'heartbeat');
   array = orderLevel3;
   orderLine = array[currentIndex];
   resetBubble();
 });
 
 tryAgain.addEventListener("click", () => {
+  easyMode.disabled = false;
+  mediumMode.disabled = false;
+  hardMode.disabled = false;
+  easyMode.classList.add('heartbeat');
+  mediumMode.classList.add('heartbeat');
+  hardMode.classList.add('heartbeat');
   bubble.classList.remove("wrong");
   endScreen.classList.add("hidden");
   resetBubble();
@@ -160,19 +197,19 @@ function gameLogic() {
   scoreBoard();
 
   setTimeout(function () {
-    movement.innerHTML = `Quick...`;
+    movement.innerHTML = `${orderLine} ! <br>Quick...`;
   }, 2000);
 
   playersTurn();
 }
 
 //Functions for right and wrong cmds
-
+let openEndScreen;
 function wrongCmd() {
   movement.innerHTML = "NO !";
   bubble.classList.add("wrong");
   playerArray = [];
-  setTimeout(function () {
+  openEndScreen = setTimeout(function () {
     endScreen.classList.remove("hidden");
     endScreen.classList.add("active");
   }, 2000);
@@ -186,7 +223,7 @@ function rightCmd() {
     playerArray = [];
     setTimeout(function () {
       gameLogic();
-    }, 2000);
+    }, 1200);
   } else if (
     orderLine.length === orderLevel1.length &&
     JSON.stringify(array) === JSON.stringify(orderLevel3)
@@ -200,8 +237,9 @@ function rightCmd() {
 
 //Pushing the entered value in players array
 
+let playersTurnTimeout;
 function playersTurn() {
-  setTimeout(function () {
+  playersTurnTimeout = setTimeout(function () {
     compareOrders();
   }, 4000);
 }
@@ -218,6 +256,8 @@ function keyHandler(press) {
     playerArray.push(" MawashiGeri");
   } else if (keyName === "ArrowDown") {
     playerArray.push(" MaeGeri");
+  } else if (keyName === "Enter") {
+    return;
   } else {
     movement.innerHTML = "Not a move";
   }
