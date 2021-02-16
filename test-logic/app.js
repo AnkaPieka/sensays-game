@@ -4,26 +4,22 @@ let bubble = document.querySelector(".bubble");
 let movement = document.querySelector(".movement.name");
 let count = document.querySelector("#count span");
 let endScreen = document.querySelector("#end-screen");
+let easyMode = document.querySelector(".btn.easy");
+let mediumMode = document.querySelector(".btn.medium");
+let hardMode = document.querySelector(".btn.hard");
+let goBack = document.querySelector(".main-page");
 
 //Shiuto = right arrow;
 // MaeGeri = arrow down;
 // Oitsuki = arrow up;
 // MawashiGeri = arrow left;
 
-//Essai de liaison keyboard/HTML
-
-// if (movement.innerHTML = 'Shiuto !')
-// document.addEventListener('keydown', (press) => {
-//     const nomTouche = press.key;
-//     if (nomTouche === 'ArrowDown'){
-//         bubble.classList.remove('wrong');
-//         movement.innerHTML = "Well done"
-//     }
-//     else {
-//         movement.innerHTML = "Hiye !";
-//         bubble.classList.add('wrong');
-//     }
-// });
+//Score board
+let score = 0;
+function scoreBoard() {
+  score += +1;
+  count.innerHTML = `${Number(score)}`;
+}
 
 //Function game start :
 
@@ -59,29 +55,98 @@ let orderLevel1 = [
   // ],
 ];
 
+let orderLevel2 = [
+  [" Shiuto"],
+  [" Shiuto", " OiTsuki"],
+  [" Shiuto", " OiTsuki", " MaeGeri"],
+  // [" Shiuto", " OiTsuki", " MaeGeri", " MaeGeri"],
+  // [" Shiuto", " OiTsuki", " MaeGeri", " MaeGeri", " Shiuto"],
+  // [" Shiuto", " OiTsuki", " MaeGeri", " MaeGeri", " Shiuto", " OiTsuki"],
+  // [" Shiuto", " OiTsuki", " MaeGeri", " MaeGeri", " Shiuto", " OiTsuki", "OiTsuki"],
+  // [
+  //   " Shiuto",
+  //   " OiTsuki",
+  //   " MaeGeri,
+  //   " MaeGeri",
+  //   " Shiuto",
+  //   " OiTsuki",
+  //   " OiTsuki",
+  //   " MaeGeri",
+  // ],
+];
+
+let orderLevel3 = [
+  [" MawashiGeri"],
+  [" MawashiGeri", " OiTsuki"],
+  [" MawashiGeri", " OiTsuki", " MaeGeri"],
+  // [" MawashiGeri", " OiTsuki", " MaeGeri", " MaeGeri"],
+  // [" MawashiGeri", " OiTsuki", " MaeGeri", " MaeGeri", " MawashiGeri"],
+  // [" MawashiGeri", " OiTsuki", " MaeGeri", " MaeGeri", " MawashiGeri", " OiTsuki"],
+  // [" MawashiGeri", " OiTsuki", " MaeGeri", " MaeGeri", " MawashiGeri", " OiTsuki", " Shiuto"],
+  // [
+  //   " MawashiGeri",
+  //   " OiTsuki",
+  //   " MaeGeri,
+  //   " MaeGeri",
+  //   " MawashiGeri",
+  //   " OiTsuki",
+  //   " Shiuto",
+  //   " MaeGeri",
+  // ],
+];
+
+//Player array and index of array
+
 let playerArray = [];
+let array = [];
 
 let currentIndex = 0;
-let orderLine = orderLevel1[currentIndex];
+let orderLine = array[currentIndex];
+
+//Level buttons
+
+easyMode.addEventListener("click", () => {
+  console.log("1!");
+  array = orderLevel1;
+  orderLine = array[currentIndex];
+  movement.innerHTML = "Press spacebar when you're ready to show your skills.";
+});
+
+mediumMode.addEventListener("click", () => {
+  console.log("2!");
+  array = orderLevel2;
+  orderLine = array[currentIndex];
+});
+
+hardMode.addEventListener("click", () => {
+  console.log("3!");
+  array = orderLevel3;
+  orderLine = array[currentIndex];
+});
 
 //Function to increase index at each turn
 
 function increaseIndex() {
   currentIndex++;
-  orderLine = orderLevel1[currentIndex];
+  orderLine = array[currentIndex];
 }
 
 //Function game logic
 
 function gameLogic() {
+  if (array.length === 0) {
+    movement.innerHTML = `CHOOSE. A. LEVEL !`;
+    return;
+  } 
   movement.innerHTML = `${orderLine} !`;
+  scoreBoard();
 
   setTimeout(function () {
-    movement.innerHTML = `Your turn`;
+    movement.innerHTML = `Quick...`;
   }, 2000);
 
   playersTurn();
-}
+};
 
 //Functions for right and wrong cmds
 
@@ -99,9 +164,8 @@ function rightCmd() {
   if (orderLine.length !== orderLevel1.length) {
     bubble.classList.remove("wrong");
     movement.innerHTML = "Well done";
-    count.innerHTML = `${+1}`;
-    playerArray = [];
     increaseIndex();
+    playerArray = [];
     setTimeout(function () {
       gameLogic();
     }, 2000);
@@ -147,4 +211,4 @@ function compareOrders() {
   } else {
     wrongCmd();
   }
-};
+}

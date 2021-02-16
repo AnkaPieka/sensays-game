@@ -92,7 +92,6 @@ body{
 }
 
 .back {
-    background-image: 
     margin: 15px;
     padding: 10px;
     border-radius: 50%;
@@ -102,4 +101,28 @@ body{
     justify-content: center;
     align-items: center;
     font-family: Chang Chang;
+}
+
+header {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    justify-content: space-around;
+}
+
+.btn {
+    margin: 10px;
+    padding: 10px;
+    border-radius: 50%;
+    background-color: black;
+    color: red;
+}
+
+.btn:hover {
+    cursor: pointer;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 50%;
+    background-color: white;
+    color: red;
 }
