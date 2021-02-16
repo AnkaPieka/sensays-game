@@ -40,32 +40,41 @@ gameStart();
 
 //Suite d'ordres donnés par Senseï :
 let orderLevel1 = [
-  ["Shiuto"], 
-  ["Shiuto", "OiTsuki"], 
-  ["Shiuto", "OiTsuki", "OiTsuki"], 
-  ["Shiuto", "OiTsuki", "OiTsuki", "Shiuto"],
-  ["Shiuto", "OiTsuki", "OiTsuki", "Shiuto", "OiTsuki"],
-  ["Shiuto", "OiTsuki", "OiTsuki", "Shiuto", "OiTsuki", "Shiuto"],
-  ["Shiuto", "OiTsuki", "OiTsuki", "Shiuto", "OiTsuki", "Shiuto", "OiTsuki"],
-  ["Shiuto", "OiTsuki", "OiTsuki", "Shiuto", "OiTsuki", "Shiuto", "OiTsuki", "Shiuto"],
+  [" Shiuto"],
+  [" Shiuto", " OiTsuki"],
+  [" Shiuto", " OiTsuki", " OiTsuki"],
+  // [" Shiuto", " OiTsuki", " OiTsuki", " Shiuto"],
+  // [" Shiuto", " OiTsuki", " OiTsuki", " Shiuto", " OiTsuki"],
+  // [" Shiuto", " OiTsuki", " OiTsuki", " Shiuto", " OiTsuki", " Shiuto"],
+  // [" Shiuto", " OiTsuki", " OiTsuki", " Shiuto", " OiTsuki", " Shiuto", "OiTsuki"],
+  // [
+  //   " Shiuto",
+  //   " OiTsuki",
+  //   " OiTsuki",
+  //   " Shiuto",
+  //   " OiTsuki",
+  //   " Shiuto",
+  //   " OiTsuki",
+  //   " Shiuto",
+  // ],
 ];
 
 let playerArray = [];
 
 let currentIndex = 0;
-let serieLign = orderLevel1[currentIndex];
+let orderLine = orderLevel1[currentIndex];
 
 //Function to increase index at each turn
 
 function increaseIndex() {
   currentIndex++;
-  serieLign = orderLevel1[currentIndex];
+  orderLine = orderLevel1[currentIndex];
 }
 
 //Function game logic
 
 function gameLogic() {
-  movement.innerHTML = `${serieLign} !`;
+  movement.innerHTML = `${orderLine} !`;
 
   setTimeout(function () {
     movement.innerHTML = `Your turn`;
@@ -87,58 +96,55 @@ function wrongCmd() {
 }
 
 function rightCmd() {
-  bubble.classList.remove("wrong");
-  movement.innerHTML = "Well done";
-  count.innerHTML = `${+1}`;
-  playerArray = [];
-  increaseIndex();
-  setTimeout(function () {
-    gameLogic();
-  }, 2000);
+  if (orderLine.length !== orderLevel1.length) {
+    bubble.classList.remove("wrong");
+    movement.innerHTML = "Well done";
+    count.innerHTML = `${+1}`;
+    playerArray = [];
+    increaseIndex();
+    setTimeout(function () {
+      gameLogic();
+    }, 2000);
+  } else {
+    movement.innerHTML = `You won.`;
+    return;
+  }
 }
 
 //Pushing the entered value in players array
 
 function playersTurn() {
-
-  
   setTimeout(function () {
     compareOrders();
   }, 4000);
 }
 
-
 //Comparing player's value with orders array
 
-function keyHandler (press){
+function keyHandler(press) {
   const keyName = press.key;
   if (keyName === "ArrowRight") {
-    playerArray.push("Shiuto");
-    
+    playerArray.push(" Shiuto");
   } else if (keyName === "ArrowUp") {
-    playerArray.push("OiTsuki");
-    
+    playerArray.push(" OiTsuki");
   } else if (keyName === "ArrowLeft") {
-    playerArray.push("MawashiGeri");
-    
+    playerArray.push(" MawashiGeri");
   } else if (keyName === "ArrowDown") {
-    playerArray.push("MaeGeri");
-    
+    playerArray.push(" MaeGeri");
   } else {
     console.log("Not even close...");
-  };
-  console.log(playerArray); 
-};
+  }
+  // console.log(playerArray);
+}
 
 document.addEventListener("keydown", keyHandler);
-
 
 // utiliser loop OU HOF pour gérer ce point ... quand tu as du temps
 function compareOrders() {
   console.log(playerArray);
-  if (JSON.stringify(playerArray) === JSON.stringify(serieLign)) {
+  if (JSON.stringify(playerArray) === JSON.stringify(orderLine)) {
     rightCmd();
   } else {
     wrongCmd();
   }
-}
+};
