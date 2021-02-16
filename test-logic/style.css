@@ -29,7 +29,8 @@ body{
     height: 500px;
     width: 500px;
     margin: 15px;
-    padding: 10px;
+    padding: 15px;
+    text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -111,18 +112,31 @@ header {
 }
 
 .btn {
+    border: solid 1px rgba(0, 0, 0, 0.5);
+    height: 80px;
+    width: 80px;
     margin: 10px;
     padding: 10px;
     border-radius: 50%;
     background-color: black;
     color: red;
+    cursor: pointer;
 }
 
-.btn:hover {
-    cursor: pointer;
-    margin: 10px;
-    padding: 10px;
-    border-radius: 50%;
+.hard:hover {
+    color:black;
+    background-color: white;
+    border: 2px solid black;
+}
+
+.medium:hover {
+    color: rgb(114, 71, 23);
+    background-color: white;
+    border: 3px solid rgb(114, 71, 23);
+}
+
+.easy:hover {
     background-color: white;
     color: red;
+    border: 2px solid red;
 }

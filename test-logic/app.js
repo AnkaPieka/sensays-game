@@ -8,6 +8,7 @@ let easyMode = document.querySelector(".btn.easy");
 let mediumMode = document.querySelector(".btn.medium");
 let hardMode = document.querySelector(".btn.hard");
 let goBack = document.querySelector(".main-page");
+let tryAgain = document.querySelector(".btn.try-again");
 
 //Shiuto = right arrow;
 // MaeGeri = arrow down;
@@ -25,9 +26,11 @@ function scoreBoard() {
 
 function gameStart() {
   document.body.onkeyup = function (press) {
-    if (press.keyCode == 32) {
+    if (press.keyCode == 13) {
       console.log("Game has started");
-      gameLogic();
+      setTimeout(function () {
+        gameLogic();
+      }, 150);
     }
   };
 }
@@ -105,23 +108,38 @@ let orderLine = array[currentIndex];
 
 //Level buttons
 
+function resetBubble() {
+  bubble.classList.remove("wrong");
+  movement.innerHTML = "Press ENTER when you're ready to show your skills.";
+  score = 0;
+  count.innerHTML = `${Number(score)}`;
+}
+
 easyMode.addEventListener("click", () => {
   console.log("1!");
   array = orderLevel1;
   orderLine = array[currentIndex];
-  movement.innerHTML = "Press spacebar when you're ready to show your skills.";
+  resetBubble();
 });
 
 mediumMode.addEventListener("click", () => {
   console.log("2!");
   array = orderLevel2;
   orderLine = array[currentIndex];
+  resetBubble();
 });
 
 hardMode.addEventListener("click", () => {
   console.log("3!");
   array = orderLevel3;
   orderLine = array[currentIndex];
+  resetBubble();
+});
+
+tryAgain.addEventListener("click", () => {
+  bubble.classList.remove("wrong");
+  endScreen.classList.add("hidden");
+  resetBubble();
 });
 
 //Function to increase index at each turn
@@ -137,7 +155,7 @@ function gameLogic() {
   if (array.length === 0) {
     movement.innerHTML = `CHOOSE. A. LEVEL !`;
     return;
-  } 
+  }
   movement.innerHTML = `${orderLine} !`;
   scoreBoard();
 
@@ -146,7 +164,7 @@ function gameLogic() {
   }, 2000);
 
   playersTurn();
-};
+}
 
 //Functions for right and wrong cmds
 
@@ -154,10 +172,10 @@ function wrongCmd() {
   movement.innerHTML = "NO !";
   bubble.classList.add("wrong");
   playerArray = [];
-  // setTimeout(function () {
-  //   endScreen.classList.remove("hidden");
-  //   endScreen.classList.add("active");
-  // }, 2000);
+  setTimeout(function () {
+    endScreen.classList.remove("hidden");
+    endScreen.classList.add("active");
+  }, 2000);
 }
 
 function rightCmd() {
@@ -169,8 +187,13 @@ function rightCmd() {
     setTimeout(function () {
       gameLogic();
     }, 2000);
+  } else if (
+    orderLine.length === orderLevel1.length &&
+    JSON.stringify(array) === JSON.stringify(orderLevel3)
+  ) {
+    movement.innerHTML = `I must admit, I'm impressed. I allow you to become my student... I guess.`;
   } else {
-    movement.innerHTML = `You won.`;
+    movement.innerHTML = `You won. Try a higher difficulty if you dare.`;
     return;
   }
 }
@@ -196,7 +219,7 @@ function keyHandler(press) {
   } else if (keyName === "ArrowDown") {
     playerArray.push(" MaeGeri");
   } else {
-    console.log("Not even close...");
+    movement.innerHTML = "Not a move";
   }
   // console.log(playerArray);
 }
