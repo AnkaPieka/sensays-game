@@ -5,6 +5,10 @@
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
+html {
+  font-size: 10px;
+}
+
 .background-music {
   height: 20px;
   margin-right: 20px;
@@ -12,6 +16,7 @@
 
 body {
   background-image: url('./Bamboo-background_3840x2160.jpg');
+  background-repeat: initial;
   height: 100%;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   display: flex;
@@ -25,7 +30,7 @@ footer {
   position: fixed;
   z-index: 1;
   background-color: black;
-  height: 3em;
+  height: 3.5em;
   width: 100%;
 }
 
@@ -50,13 +55,16 @@ footer {
   background-position: center;
 }
 
-#leaf {
-  height: 40px;
-  margin: 10px;
+#buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 3em 0;
+  bottom: 10;
 }
 
 .btn {
-  font-size: 1.4em;
+  font-size: 2em;
   border: solid 1px rgba(0, 0, 0, 0.5);
   height: 100px;
   width: 100px;
@@ -71,27 +79,26 @@ footer {
   align-items: center;
 }
 .btn:hover {
+  border: 3px solid rgb(0, 0, 0);
   color: white;
   background-color: red;
   border: 1px solid red;
 }
 
-
 .main-btn {
   height: 150px;
   width: 150px;
 }
-
-#buttons {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 3em 0;
-  bottom: 10;
+.main-btn:hover {
+  border: 3px solid rgba(0, 0, 0, 0);
 }
 
 #game-name {
   margin: 8em 0;
+}
+
+.game-name-img {
+  margin: 80px 0px;
 }
 
 #moves-icons {
@@ -102,6 +109,8 @@ footer {
 }
 
 .move-icon {
+  background-color: rgba(255,255,255,0.8);
+  border-radius: 25%;
   height: 50px;
   margin: 20px;
   padding: 5px;
@@ -109,16 +118,22 @@ footer {
 
 #rules {
   /* position: absolute; */
-  font-size: 25px;
+  font-size: 3em;
   color: white;
   width: 65%;
-  margin: 1em;
-  background-color: rgba(0, 0, 0, 0.6);
+  margin: 1em 1em 5em 1em;
+  background-color: rgba(0, 0, 0, 0.8);
   padding: 25px;
-  line-height: 1.5;
+  line-height: 1.45em;
+}
+
+#rules-last-phrase {
+  font-size: 2em;
+  text-align: center;
 }
 
 .icon-presentation {
+  justify-content: center;
   text-align: center;
   margin: 10px;
 }
@@ -127,6 +142,30 @@ footer {
   visibility: hidden;
   display: none;
 }
+
+
+/*RESPONSIVENESS*/
+
+@media (max-width: 750px) {
+  
+  html {
+    font-size: 10px;
+  }
+
+  .game-name-img {
+    width : 300px;
+    margin: 5em 0;
+  }
+
+  #moves-icons {
+    margin: 15px 0;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+}
+
+
 
 /*ANIMATIONS OF ELEMENTS*/
 

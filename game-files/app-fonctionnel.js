@@ -10,9 +10,9 @@ let hardMode = document.querySelector(".btn.hard");
 let goBack = document.querySelector(".main-page");
 let tryAgain = document.querySelector(".btn.try-again");
 
-//Shiuto = right arrow;
+//Shuto = right arrow;
 // MaeGeri = arrow down;
-// Oitsuki = arrow up;
+// OiZuki = arrow up;
 // MawashiGeri = arrow left;
 
 //Function game start :
@@ -32,69 +32,69 @@ gameStart();
 
 //Suite d'ordres donnés par Senseï :
 let orderLevel1 = [
-  [" Shiuto"],
-  [" Shiuto", " OiTsuki"],
-  [" Shiuto", " OiTsuki", " OiTsuki"],
-  // [" Shiuto", " OiTsuki", " OiTsuki", " Shiuto"],
-  // [" Shiuto", " OiTsuki", " OiTsuki", " Shiuto", " OiTsuki"],
-  // [" Shiuto", " OiTsuki", " OiTsuki", " Shiuto", " OiTsuki", " Shiuto"],
+  [" Shuto"],
+  [" Shuto", " OiZuki"],
+  [" Shuto", " OiZuki", " OiZuki"],
+  // [" Shuto", " OiZuki", " OiZuki", " Shuto"],
+  // [" Shuto", " OiZuki", " OiZuki", " Shuto", " OiZuki"],
+  // [" Shuto", " OiZuki", " OiZuki", " Shuto", " OiZuki", " Shuto"],
   // [
-  //   " Shiuto",
-  //   " OiTsuki",
-  //   " OiTsuki",
-  //   " Shiuto",
-  //   " OiTsuki",
-  //   " Shiuto",
-  //   " OiTsuki",
+  //   " Shuto",
+  //   " OiZuki",
+  //   " OiZuki",
+  //   " Shuto",
+  //   " OiZuki",
+  //   " Shuto",
+  //   " OiZuki",
   // ],
   // [
-  //   " Shiuto",
-  //   " OiTsuki",
-  //   " OiTsuki",
-  //   " Shiuto",
-  //   " OiTsuki",
-  //   " Shiuto",
-  //   " OiTsuki",
-  //   " Shiuto",
+  //   " Shuto",
+  //   " OiZuki",
+  //   " OiZuki",
+  //   " Shuto",
+  //   " OiZuki",
+  //   " Shuto",
+  //   " OiZuki",
+  //   " Shuto",
   // ],
 ];
 
 let orderLevel2 = [
-  [" Shiuto"],
-  [" Shiuto", " OiTsuki"],
-  [" Shiuto", " OiTsuki", " MaeGeri"],
-  // [" Shiuto", " OiTsuki", " MaeGeri", " MaeGeri"],
-  // [" Shiuto", " OiTsuki", " MaeGeri", " MaeGeri", " Shiuto"],
-  // [" Shiuto", " OiTsuki", " MaeGeri", " MaeGeri", " Shiuto", " OiTsuki"],
-  // [" Shiuto", " OiTsuki", " MaeGeri", " MaeGeri", " Shiuto", " OiTsuki", "OiTsuki"],
+  [" Shuto"],
+  [" Shuto", " OiZuki"],
+  [" Shuto", " OiZuki", " MaeGeri"],
+  // [" Shuto", " OiZuki", " MaeGeri", " MaeGeri"],
+  // [" Shuto", " OiZuki", " MaeGeri", " MaeGeri", " Shuto"],
+  // [" Shuto", " OiZuki", " MaeGeri", " MaeGeri", " Shuto", " OiZuki"],
+  // [" Shuto", " OiZuki", " MaeGeri", " MaeGeri", " Shuto", " OiZuki", "OiZuki"],
   // [
-  //   " Shiuto",
-  //   " OiTsuki",
+  //   " Shuto",
+  //   " OiZuki",
   //   " MaeGeri,
   //   " MaeGeri",
-  //   " Shiuto",
-  //   " OiTsuki",
-  //   " OiTsuki",
+  //   " Shuto",
+  //   " OiZuki",
+  //   " OiZuki",
   //   " MaeGeri",
   // ],
 ];
 
 let orderLevel3 = [
   [" MawashiGeri"],
-  [" MawashiGeri", " OiTsuki"],
-  [" MawashiGeri", " OiTsuki", " MaeGeri"],
-  // [" MawashiGeri", " OiTsuki", " MaeGeri", " MaeGeri"],
-  // [" MawashiGeri", " OiTsuki", " MaeGeri", " MaeGeri", " MawashiGeri"],
-  // [" MawashiGeri", " OiTsuki", " MaeGeri", " MaeGeri", " MawashiGeri", " OiTsuki"],
-  // [" MawashiGeri", " OiTsuki", " MaeGeri", " MaeGeri", " MawashiGeri", " OiTsuki", " Shiuto"],
+  [" MawashiGeri", " OiZuki"],
+  [" MawashiGeri", " OiZuki", " MaeGeri"],
+  // [" MawashiGeri", " OiZuki", " MaeGeri", " MaeGeri"],
+  // [" MawashiGeri", " OiZuki", " MaeGeri", " MaeGeri", " MawashiGeri"],
+  // [" MawashiGeri", " OiZuki", " MaeGeri", " MaeGeri", " MawashiGeri", " OiZuki"],
+  // [" MawashiGeri", " OiZuki", " MaeGeri", " MaeGeri", " MawashiGeri", " OiZuki", " Shuto"],
   // [
   //   " MawashiGeri",
-  //   " OiTsuki",
+  //   " OiZuki",
   //   " MaeGeri,
   //   " MaeGeri",
   //   " MawashiGeri",
-  //   " OiTsuki",
-  //   " Shiuto",
+  //   " OiZuki",
+  //   " Shuto",
   //   " MaeGeri",
   // ],
 ];
@@ -166,7 +166,7 @@ function resetBubble() {
   bubble.classList.remove("wrong");
   playerArray = [];
   currentIndex = 0;
-  movement.innerHTML = "Press ENTER when you're ready to show your skills.";
+  movement.innerHTML = "Press ENTER when you're ready to show your skills to Ishikawa.";
   score = 0;
   count.innerHTML = `${Number(score)}`;
   // console.log(playerArray);
@@ -205,9 +205,9 @@ function playersTurn() {
 function keyHandler(press) {
   const keyName = press.key;
   if (keyName === "ArrowRight") {
-    playerArray.push(" Shiuto");
+    playerArray.push(" Shuto");
   } else if (keyName === "ArrowUp") {
-    playerArray.push(" OiTsuki");
+    playerArray.push(" OiZuki");
   } else if (keyName === "ArrowLeft") {
     playerArray.push(" MawashiGeri");
   } else if (keyName === "ArrowDown") {
