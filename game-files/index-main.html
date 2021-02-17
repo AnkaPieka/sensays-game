@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sensay's game</title>
+    <link rel="stylesheet" href="./style-main.css" />
+    <script type="module" src="./app-main.js"></script>
+  </head>
+  <body>
+    <header></header>
+
+    <section id="menu">
+      <div id="title">
+        <div id="game-name" class="scale-in-center">
+          <img src="./sensaysletters.png" alt="game name" />
+        </div>
+      </div>
+      <div id="buttons">
+        <button class="btn secondary-btn slide-in-top">Rules</button>
+        <a href="./index.html"
+          ><img
+            class="main-btn slide-in-top"
+            src="./enter dojo.png"
+            alt="main button"
+        /></a>
+      </div>
+    </section>
+
+    <section id="rules" class="hidden">
+      <article>
+        <p>
+          For years, you've train for this moment... Finally, it's time ! Time
+          to show your talent to the legendary and mighty Ishikawa sensei.
+        </p>
+        <p>
+          He's well known to be the best teacher in all Okinawa... and the
+          grumpiest one, too. With him, no second chance.
+        </p>
+        <p>
+          You'll have to earn his respect reproducing his moves perfectly. If
+          you're lucky - and talented - maybe he'll accept you as a student.
+        </p>
+        <p>
+          Each technique is linked to a keyboard arrow. Remember them all...
+        </p>
+        <div id="moves-icons">
+          <div class="icon-pres">
+            <img
+              class="move-icon"
+              src="./keyboard-right-arrow-button.png"
+              alt="right arrow shuto"
+            />
+            <p>
+              This move is called <i>shuto</i>. It's an open hand technique,
+              meant to be like a blade.
+            </p>
+          </div>
+          <div class="icon-presentation">
+            <img
+              class="move-icon"
+              src="./up-arrow-key.png"
+              alt="up arrow oizuki"
+            />
+            <p>This move is called <i>oi zuki</i>. It's a stepping punch.</p>
+          </div>
+          <div class="icon-pres">
+            <img
+              class="move-icon"
+              src="./keyboard-left-arrow-button.png"
+              alt="left arrow mawashigeri"
+            />
+            <p>
+              <i>Mawashi geri</i> is actually quite famous : it's a round kick.
+            </p>
+          </div>
+          <div class="icon-pres">
+            <img
+              class="move-icon"
+              src="./down-chevron.png"
+              alt="down arrow maegeri"
+            />
+            <p>Finally, <i>Mae geri</i>, is a front kick.</p>
+          </div>
+        </div>
+        <p>
+          Once you'll be inside Ishikawa sensei's dojo, you'll be able to
+          indicate your level : white belt, brown belt or black belt. Choose
+          wisely as you won't be able to change your level until you complete
+          the serie... or loose.
+        </p>
+        <p>Ready ? Hajime !</p>
+      </article>
+    </section>
+    <footer>
+      <audio controls class="background-music">
+        <source src="./Sakura.mp3" type="audio/mpeg" />
+        <p>Your browser doesn't support audio file</p>
+      </audio>
+    </footer>
+  </body>
+</html>
