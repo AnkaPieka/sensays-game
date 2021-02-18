@@ -2,226 +2,262 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+html {
+  font-size: 10px;
+}
+
+.background-music {
+  height: 20px;
+  margin-right: 20px;
 }
 
 body {
+  background-image: url('./Bamboo-background_3840x2160.jpg');
+  background-repeat: initial;
+  height: 100%;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-  background-image: url(./shoji.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
-a {
-  color: white;
-  text-decoration: none;
-  font-size: 18px;
+header,
+footer {
+  position: fixed;
+  z-index: 1;
+  background-color: black;
+  height: 3.5em;
+  width: 100%;
 }
 
 header {
-    display: flex;
-    flex-wrap: nowrap;
-    align-items: flex-start;
-    justify-content: space-evenly;
-  }
-
-.movement.img {
-  height: 10em;
+  top: 0;
 }
 
-.movement.name {
-  font-size: 50px;
-}
-
-.bubble {
-  background: white;
-  border: 2px solid black;
-  height: 500px;
-  width: 500px;
-  margin: 15px;
-  padding: 15px;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#count {
-  font-size: 2.2em;
-  text-shadow: 1px 1px 2px white; 
-}
-
-.wrong {
-  border: 2px solid red;
-  color: white;
-  background-color: black;
-  height: 500px;
-  width: 500px;
-  margin: 15px;
-  padding: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: -1;
-}
-
-.back {
+footer {
+  width: 100%;
+  bottom: 0;
   display: flex;
   flex-direction: row-reverse;
-  justify-self: flex-end;
-  align-content: flex-end;
+  align-items: center;
 }
 
-#end-screen.hidden {
-  position: absolute;
-  visibility: hidden;
-}
 
-#end-screen.active {
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-  z-index: 1;
-  position: absolute;
-  background-color: rgba(0, 0, 0, 0.9);
-  color: rgb(226, 17, 17);
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 45px;
+#menu {
   height: 100%;
-  padding: 27px;
-  text-align: center;
-  text-shadow: 1px 1px 2px black; 
-  display: flex;
-  flex-wrap: nowrap;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
+  background-image: url("./samurai-2556603_1280.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
 }
 
-.btn.try-again {
-  background-color: white;
-  color: black;
-  border: 2px solid red;
-  height: 80px;
-  width: 80px;
-  border-radius: 50%;
-  margin: 40px;
-  padding: 5px;
-  font-size: 15px;
-  align-self: center;
-}
-
-.back {
-  margin: 15px;
-  padding: 10px;
-  border-radius: 50%;
-  height: 5em;
-  width: 5em;
+#buttons {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  margin: 3em 0;
+  bottom: 10;
 }
 
 .btn {
-  border: solid 1px white;
-  height: 80px;
-  width: 80px;
+  font-size: 2em;
+  border: solid 1px rgba(0, 0, 0, 0.5);
+  height: 100px;
+  width: 100px;
   margin: 10px;
   padding: 10px;
   border-radius: 50%;
   background-color: black;
-  color: white;
+  color: red;
   cursor: pointer;
-  text-shadow: 1px 1px 2px black; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn:hover {
+  border: 3px solid rgb(0, 0, 0);
+  color: white;
+  background-color: red;
+  border: 1px solid red;
 }
 
-.btn.to-main-page:hover {
-    border: 3px solid white;
-    background-color:rgba(0, 0, 0, 0.8);
+.main-btn {
+  height: 150px;
+  width: 150px;
+}
+.main-btn:hover {
+  border: 3px solid rgba(0, 0, 0, 0);
 }
 
-.hard:hover {
-  color: black;
-  background-color: white;
-  border: 2px solid black;
+#game-name {
+  margin: 8em 0;
 }
 
-.chosen-hard {
-  color: black;
-  background-color: white;
-  border: 2px solid black;
+.game-name-img {
+  margin: 80px 0px;
 }
 
-.medium:hover {
-  color: rgb(114, 71, 23);
-  background-color: white;
-  border: 3px solid rgb(114, 71, 23);
+#moves-icons {
+  margin: 15px 0;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: nowrap;
 }
 
-.chosen-medium {
-  color: rgb(114, 71, 23);
-  background-color: white;
-  border: 3px solid rgb(114, 71, 23);
+.move-icon {
+  background-color: rgba(255,255,255,0.8);
+  border-radius: 25%;
+  height: 50px;
+  margin: 20px;
+  padding: 5px;
 }
 
-.easy:hover {
-  background-color: white;
-  color: red;
-  border: 2px solid red;
+#rules {
+  /* position: absolute; */
+  font-size: 3em;
+  color: white;
+  width: 65%;
+  margin: 1em 1em 5em 1em;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 25px;
+  line-height: 1.45em;
 }
 
-.chosen-easy {
-  background-color: white;
-  color: red;
-  border: 2px solid red;
+#rules-last-phrase {
+  font-size: 2em;
+  text-align: center;
 }
+
+.icon-presentation {
+  justify-content: center;
+  text-align: center;
+  margin: 10px;
+}
+
+.hidden {
+  visibility: hidden;
+  display: none;
+}
+
 
 /*RESPONSIVENESS*/
-@media (max-width : 750px){
+
+@media (max-width: 750px) {
+  
   html {
-    font-size : 10px;
-    height: 100%;
+    font-size: 10px;
   }
 
-
-  .bubble {
-    /* font-size: 5px; */
-    height: 32em;
-    width: 32em;
-    margin: 3em;
-    padding: 10px;
+  .game-name-img {
+    width : 300px;
+    margin: 5em 0;
   }
 
-  .movement.name {
-    font-size: 2em;
-  }
-
-  .btn.to-main-page {
-    margin : 2.5em 0;
-  }
-
-  #count {
-    font-size: 2.5em;
-    text-shadow: 1px 1px 2px white; 
-  }
-
-  #end-screen.active {
-    font-size: 2em;
-    height: 80%;
-    padding: 3px;
-    margin-top: 10px;
+  #moves-icons {
+    margin: 15px 0;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
   }
 }
 
 
-/*ANIMATIONS*/
+
+/*ANIMATIONS OF ELEMENTS*/
+
+.slide-in-top {
+  -webkit-animation: slide-in-top 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1s
+    both;
+  animation: slide-in-top 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1s both;
+}
+/* ----------------------------------------------
+ * Generated by Animista on 2021-2-16 23:34:28
+ * Licensed under FreeBSD License.
+ * See http://animista.net/license for more info. 
+ * w: http://animista.net, t: @cssanimista
+ * ---------------------------------------------- */
+
+/**
+ * ----------------------------------------
+ * animation slide-in-top
+ * ----------------------------------------
+ */
+@-webkit-keyframes slide-in-top {
+  0% {
+    -webkit-transform: translateY(-1000px);
+    transform: translateY(-1000px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes slide-in-top {
+  0% {
+    -webkit-transform: translateY(-1000px);
+    transform: translateY(-1000px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.scale-in-center {
+  -webkit-animation: scale-in-center 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+    1s both;
+  animation: scale-in-center 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1s both;
+}
+
+/* ----------------------------------------------
+ * Generated by Animista on 2021-2-17 13:31:39
+ * Licensed under FreeBSD License.
+ * See http://animista.net/license for more info. 
+ * w: http://animista.net, t: @cssanimista
+ * ---------------------------------------------- */
+
+/**
+ * ----------------------------------------
+ * animation scale-in-center
+ * ----------------------------------------
+ */
+@-webkit-keyframes scale-in-center {
+  0% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes scale-in-center {
+  0% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
 
 .heartbeat {
-  -webkit-animation: heartbeat 1.5s ease-in-out infinite both;
-  animation: heartbeat 1.5s ease-in-out infinite both;
+	-webkit-animation: heartbeat 1.5s ease-in-out infinite both;
+	        animation: heartbeat 1.5s ease-in-out infinite both;
 }
 
 /* ----------------------------------------------
@@ -236,71 +272,72 @@ header {
  * animation heartbeat
  * ----------------------------------------
  */
-@-webkit-keyframes heartbeat {
-  from {
-    -webkit-transform: scale(1);
-    transform: scale(1);
-    -webkit-transform-origin: center center;
-    transform-origin: center center;
-    -webkit-animation-timing-function: ease-out;
-    animation-timing-function: ease-out;
+ @-webkit-keyframes heartbeat {
+    from {
+      -webkit-transform: scale(1);
+              transform: scale(1);
+      -webkit-transform-origin: center center;
+              transform-origin: center center;
+      -webkit-animation-timing-function: ease-out;
+              animation-timing-function: ease-out;
+    }
+    10% {
+      -webkit-transform: scale(0.91);
+              transform: scale(0.91);
+      -webkit-animation-timing-function: ease-in;
+              animation-timing-function: ease-in;
+    }
+    17% {
+      -webkit-transform: scale(0.98);
+              transform: scale(0.98);
+      -webkit-animation-timing-function: ease-out;
+              animation-timing-function: ease-out;
+    }
+    33% {
+      -webkit-transform: scale(0.87);
+              transform: scale(0.87);
+      -webkit-animation-timing-function: ease-in;
+              animation-timing-function: ease-in;
+    }
+    45% {
+      -webkit-transform: scale(1);
+              transform: scale(1);
+      -webkit-animation-timing-function: ease-out;
+              animation-timing-function: ease-out;
+    }
   }
-  10% {
-    -webkit-transform: scale(0.91);
-    transform: scale(0.91);
-    -webkit-animation-timing-function: ease-in;
-    animation-timing-function: ease-in;
+  @keyframes heartbeat {
+    from {
+      -webkit-transform: scale(1);
+              transform: scale(1);
+      -webkit-transform-origin: center center;
+              transform-origin: center center;
+      -webkit-animation-timing-function: ease-out;
+              animation-timing-function: ease-out;
+    }
+    10% {
+      -webkit-transform: scale(0.91);
+              transform: scale(0.91);
+      -webkit-animation-timing-function: ease-in;
+              animation-timing-function: ease-in;
+    }
+    17% {
+      -webkit-transform: scale(0.98);
+              transform: scale(0.98);
+      -webkit-animation-timing-function: ease-out;
+              animation-timing-function: ease-out;
+    }
+    33% {
+      -webkit-transform: scale(0.87);
+              transform: scale(0.87);
+      -webkit-animation-timing-function: ease-in;
+              animation-timing-function: ease-in;
+    }
+    45% {
+      -webkit-transform: scale(1);
+              transform: scale(1);
+      -webkit-animation-timing-function: ease-out;
+              animation-timing-function: ease-out;
+    }
   }
-  17% {
-    -webkit-transform: scale(0.98);
-    transform: scale(0.98);
-    -webkit-animation-timing-function: ease-out;
-    animation-timing-function: ease-out;
-  }
-  33% {
-    -webkit-transform: scale(0.87);
-    transform: scale(0.87);
-    -webkit-animation-timing-function: ease-in;
-    animation-timing-function: ease-in;
-  }
-  45% {
-    -webkit-transform: scale(1);
-    transform: scale(1);
-    -webkit-animation-timing-function: ease-out;
-    animation-timing-function: ease-out;
-  }
-}
-@keyframes heartbeat {
-  from {
-    -webkit-transform: scale(1);
-    transform: scale(1);
-    -webkit-transform-origin: center center;
-    transform-origin: center center;
-    -webkit-animation-timing-function: ease-out;
-    animation-timing-function: ease-out;
-  }
-  10% {
-    -webkit-transform: scale(0.91);
-    transform: scale(0.91);
-    -webkit-animation-timing-function: ease-in;
-    animation-timing-function: ease-in;
-  }
-  17% {
-    -webkit-transform: scale(0.98);
-    transform: scale(0.98);
-    -webkit-animation-timing-function: ease-out;
-    animation-timing-function: ease-out;
-  }
-  33% {
-    -webkit-transform: scale(0.87);
-    transform: scale(0.87);
-    -webkit-animation-timing-function: ease-in;
-    animation-timing-function: ease-in;
-  }
-  45% {
-    -webkit-transform: scale(1);
-    transform: scale(1);
-    -webkit-animation-timing-function: ease-out;
-    animation-timing-function: ease-out;
-  }
-}
+  
