@@ -14,12 +14,12 @@ let cheatSheetBtn = document.querySelector(".btn.bottom.cheat-sheet");
 let cheatSheetDiv = document.querySelector("#cheat-sheet");
 let btnNoise = document.getElementById("bamboo-noise");
 
-//Shuto = right arrow;
+//Shuto = arrow right;
 // MaeGeri = arrow down;
 // OiZuki = arrow up;
 // MawashiGeri = arrow left;
 
-//Function game start :
+//STARTING THE GAME:
 
 function gameStart() {
   document.body.onkeyup = function (press) {
@@ -34,7 +34,7 @@ function gameStart() {
 
 gameStart();
 
-//Suite d'ordres donnés par Senseï :
+//SENSEI ORDERS:
 let orderLevel1 = [
   [" Shuto"],
   [" Shuto", " OiZuki"],
@@ -110,7 +110,7 @@ let orderLevel3 = [
   ],
 ];
 
-//Player array and index of array
+//ARRAY AND INDEX
 
 let playerArray = [];
 let array = [];
@@ -118,10 +118,10 @@ let array = [];
 let currentIndex = 0;
 let orderLine = array[currentIndex];
 
-//Level buttons
+//BUTTONS
 
 easyMode.addEventListener("click", () => {
-  console.log("1!");
+  // console.log("1!");
   document.addEventListener("keydown", keyHandler);
   btnNoise.play();
   easyMode.classList.toggle("chosen-easy");
@@ -135,7 +135,7 @@ easyMode.addEventListener("click", () => {
 });
 
 mediumMode.addEventListener("click", () => {
-  console.log("2!");
+  // console.log("2!");
   document.addEventListener("keydown", keyHandler);
   btnNoise.play();
   mediumMode.classList.toggle("chosen-medium");
@@ -149,7 +149,7 @@ mediumMode.addEventListener("click", () => {
 });
 
 hardMode.addEventListener("click", () => {
-  console.log("3!");
+  // console.log("3!");
   document.addEventListener("keydown", keyHandler);
   btnNoise.play();
   hardMode.classList.toggle("chosen-hard");
@@ -163,9 +163,13 @@ hardMode.addEventListener("click", () => {
 });
 
 tryAgain.addEventListener("click", () => {
-  for (let i = 0; i<headerBtn.length; i++){
-    headerBtn[i].classList.remove("chosen-easy", "chosen-medium", "chosen-hard")
-  };
+  for (let i = 0; i < headerBtn.length; i++) {
+    headerBtn[i].classList.remove(
+      "chosen-easy",
+      "chosen-medium",
+      "chosen-hard"
+    );
+  }
   easyMode.disabled = false;
   mediumMode.disabled = false;
   hardMode.disabled = false;
@@ -198,7 +202,7 @@ function resetBubble() {
   movement.innerHTML = "Press ENTER when you're ready to show your skills.";
   score = 0;
   count.innerHTML = `${Number(score)}`;
-  console.log(playerArray);
+  // console.log(playerArray);
 }
 
 function disableAllLevelBtn() {
@@ -207,7 +211,7 @@ function disableAllLevelBtn() {
   hardMode.disabled = true;
 }
 
-//Function game logic
+//GAME LOGIC
 
 function gameLogic() {
   if (array.length === 0) {
@@ -224,7 +228,7 @@ function gameLogic() {
   playersTurn();
 }
 
-//Pushing the entered value in players array
+//PUSHING PLAYERS CMD and ADDING TIMEOUT
 
 let playersTurnTimeout;
 function playersTurn() {
@@ -238,8 +242,6 @@ function playersTurn() {
     );
   }, 3000);
 }
-
-//Comparing player's value with orders array
 
 function keyHandler(press) {
   const keyName = press.key;
@@ -275,7 +277,7 @@ function keyHandler(press) {
   // console.log(playerArray);
 }
 
-// utiliser loop OU HOF pour gérer ce point ... quand tu as du temps
+//COMPARING FINAL CMDS
 function compareOrders() {
   console.log(playerArray);
   if (JSON.stringify(playerArray) === JSON.stringify(orderLine)) {
@@ -327,7 +329,7 @@ function rightCmd() {
   }
 }
 
-//Function to increase index at each turn
+//Increase index at each turn
 
 function increaseIndex() {
   currentIndex++;

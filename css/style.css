@@ -46,6 +46,8 @@ footer {
   align-items: center;
 }
 
+/*MENU*/
+
 #menu {
   height: 100%;
   background-image: url("../img/samurai-2556603_1280.png");
@@ -54,6 +56,7 @@ footer {
   background-position: center;
 }
 
+/*BUTTONS*/
 #buttons {
   display: flex;
   justify-content: space-between;
@@ -92,6 +95,7 @@ footer {
   border: 3px solid rgba(0, 0, 0, 0);
 }
 
+/*GAME LOGO*/
 #game-name {
   margin: 8em 0;
 }
@@ -99,6 +103,8 @@ footer {
 .game-name-img {
   margin: 80px 0px;
 }
+
+/*ICONS FOR KARATE MOVEMENTS*/
 
 #moves-icons {
   margin: 15px 0;
@@ -123,7 +129,7 @@ footer {
   background-color: rgba(224, 46, 46, 0.521);
 }
 
-.arrowkey-icon.mawashigeri{
+.arrowkey-icon.mawashigeri {
   background-color: rgba(235, 180, 79, 0.575);
 }
 

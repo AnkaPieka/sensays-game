@@ -57,8 +57,8 @@ header {
   text-shadow: 1px 1px 1px black;
 }
 
-.oizuki-color{
-  background-color: rgba(224, 46, 46, 0.521) ;
+.oizuki-color {
+  background-color: rgba(224, 46, 46, 0.521);
   color: white;
   text-shadow: 1px 1px 2px black;
 }
@@ -94,14 +94,6 @@ header {
   font-size: 2.2em;
   text-shadow: 1px 1px 2px white;
 }
-
-
-/* .back {
-  display: flex;
-  flex-direction: row-reverse;
-  justify-self: flex-end;
-  align-content: flex-end;
-} */
 
 /*CHEAT SHEET*/
 
@@ -150,17 +142,6 @@ header {
   align-items: center;
   margin-top: 20px;
 }
-
-/* .back {
-  margin: 15px;
-  padding: 10px;
-  border-radius: 50%;
-  height: 5em;
-  width: 5em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-} */
 
 /*ALL BTN STYLE*/
 
@@ -236,12 +217,11 @@ header {
 .btn.bottom:hover {
   border: 3px solid white;
   background-color: rgba(0, 0, 0, 0.8);
-  /* margin : 0 3px; */
 }
 
 .arrowkey-icon {
-  height:30px;
-  width:30px;
+  height: 30px;
+  width: 30px;
   border-radius: 25%;
 }
 
@@ -253,7 +233,7 @@ header {
   background-color: rgba(224, 46, 46, 0.521);
 }
 
-.arrowkey-icon.mawashigeri{
+.arrowkey-icon.mawashigeri {
   background-color: rgba(235, 180, 79, 0.575);
 }
 
@@ -272,7 +252,6 @@ header {
   width: 300px;
   height: auto;
 }
-
 
 /*RESPONSIVENESS*/
 @media (max-width: 750px) {
