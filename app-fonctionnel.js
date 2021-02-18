@@ -170,6 +170,7 @@ tryAgain.addEventListener("click", () => {
     "shuto-color"
   );
   resetBubble();
+  movement.innerHTML = "Choose a level";
 });
 
 cheatSheetBtn.addEventListener("mouseover", () => {
