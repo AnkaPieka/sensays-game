@@ -4,6 +4,7 @@ let bubble = document.querySelector(".bubble");
 let movement = document.querySelector(".movement.name");
 let count = document.querySelector("#count span");
 let endScreen = document.querySelector("#end-screen");
+let headerBtn = document.querySelectorAll(".level");
 let easyMode = document.querySelector(".btn.easy");
 let mediumMode = document.querySelector(".btn.medium");
 let hardMode = document.querySelector(".btn.hard");
@@ -11,7 +12,7 @@ let goBack = document.querySelector(".main-page");
 let tryAgain = document.querySelector(".btn.try-again");
 let cheatSheetBtn = document.querySelector(".btn.bottom.cheat-sheet");
 let cheatSheetDiv = document.querySelector("#cheat-sheet");
-let btnNoise = document.getElementById('bamboo-noise');
+let btnNoise = document.getElementById("bamboo-noise");
 
 //Shuto = right arrow;
 // MaeGeri = arrow down;
@@ -41,15 +42,7 @@ let orderLevel1 = [
   [" Shuto", " OiZuki", " OiZuki", " Shuto"],
   [" Shuto", " OiZuki", " OiZuki", " Shuto", " OiZuki"],
   [" Shuto", " OiZuki", " OiZuki", " Shuto", " OiZuki", " Shuto"],
-  [
-    " Shuto",
-    " OiZuki",
-    " OiZuki",
-    " Shuto",
-    " OiZuki",
-    " Shuto",
-    " OiZuki",
-  ],
+  [" Shuto", " OiZuki", " OiZuki", " Shuto", " OiZuki", " Shuto", " OiZuki"],
   [
     " Shuto",
     " OiZuki",
@@ -88,8 +81,23 @@ let orderLevel3 = [
   [" MawashiGeri", " OiZuki", " MaeGeri"],
   [" MawashiGeri", " OiZuki", " MaeGeri", " MaeGeri"],
   [" MawashiGeri", " OiZuki", " MaeGeri", " MaeGeri", " MawashiGeri"],
-  [" MawashiGeri", " OiZuki", " MaeGeri", " MaeGeri", " MawashiGeri", " OiZuki"],
-  [" MawashiGeri", " OiZuki", " MaeGeri", " MaeGeri", " MawashiGeri", " OiZuki", " Shuto"],
+  [
+    " MawashiGeri",
+    " OiZuki",
+    " MaeGeri",
+    " MaeGeri",
+    " MawashiGeri",
+    " OiZuki",
+  ],
+  [
+    " MawashiGeri",
+    " OiZuki",
+    " MaeGeri",
+    " MaeGeri",
+    " MawashiGeri",
+    " OiZuki",
+    " Shuto",
+  ],
   [
     " MawashiGeri",
     " OiZuki",
@@ -155,6 +163,9 @@ hardMode.addEventListener("click", () => {
 });
 
 tryAgain.addEventListener("click", () => {
+  for (let i = 0; i<headerBtn.length; i++){
+    headerBtn[i].classList.remove("chosen-easy", "chosen-medium", "chosen-hard")
+  };
   easyMode.disabled = false;
   mediumMode.disabled = false;
   hardMode.disabled = false;
@@ -171,6 +182,7 @@ tryAgain.addEventListener("click", () => {
   );
   resetBubble();
   movement.innerHTML = "Choose a level";
+  array = [];
 });
 
 cheatSheetBtn.addEventListener("mouseover", () => {
@@ -194,7 +206,6 @@ function disableAllLevelBtn() {
   easyMode.disabled = true;
   hardMode.disabled = true;
 }
-
 
 //Function game logic
 

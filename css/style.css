@@ -103,7 +103,7 @@ footer {
 #moves-icons {
   margin: 15px 0;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   flex-wrap: nowrap;
 }
 
