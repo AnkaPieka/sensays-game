@@ -15,7 +15,7 @@ html {
 }
 
 body {
-  background-image: url('./Bamboo-background_3840x2160.jpg');
+  background-image: url('../img/Bamboo-background_3840x2160.jpg');
   background-repeat: initial;
   height: 100%;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
@@ -49,7 +49,7 @@ footer {
 
 #menu {
   height: 100%;
-  background-image: url("./samurai-2556603_1280.png");
+  background-image: url("../img/samurai-2556603_1280.png");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
