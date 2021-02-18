@@ -11,6 +11,7 @@ let goBack = document.querySelector(".main-page");
 let tryAgain = document.querySelector(".btn.try-again");
 let cheatSheetBtn = document.querySelector(".btn.bottom.cheat-sheet");
 let cheatSheetDiv = document.querySelector("#cheat-sheet");
+let btnNoise = document.getElementById('bamboo-noise');
 
 //Shuto = right arrow;
 // MaeGeri = arrow down;
@@ -37,68 +38,68 @@ let orderLevel1 = [
   [" Shuto"],
   [" Shuto", " OiZuki"],
   [" Shuto", " OiZuki", " OiZuki"],
-  // [" Shuto", " OiZuki", " OiZuki", " Shuto"],
-  // [" Shuto", " OiZuki", " OiZuki", " Shuto", " OiZuki"],
-  // [" Shuto", " OiZuki", " OiZuki", " Shuto", " OiZuki", " Shuto"],
-  // [
-  //   " Shuto",
-  //   " OiZuki",
-  //   " OiZuki",
-  //   " Shuto",
-  //   " OiZuki",
-  //   " Shuto",
-  //   " OiZuki",
-  // ],
-  // [
-  //   " Shuto",
-  //   " OiZuki",
-  //   " OiZuki",
-  //   " Shuto",
-  //   " OiZuki",
-  //   " Shuto",
-  //   " OiZuki",
-  //   " Shuto",
-  // ],
+  [" Shuto", " OiZuki", " OiZuki", " Shuto"],
+  [" Shuto", " OiZuki", " OiZuki", " Shuto", " OiZuki"],
+  [" Shuto", " OiZuki", " OiZuki", " Shuto", " OiZuki", " Shuto"],
+  [
+    " Shuto",
+    " OiZuki",
+    " OiZuki",
+    " Shuto",
+    " OiZuki",
+    " Shuto",
+    " OiZuki",
+  ],
+  [
+    " Shuto",
+    " OiZuki",
+    " OiZuki",
+    " Shuto",
+    " OiZuki",
+    " Shuto",
+    " OiZuki",
+    " Shuto",
+  ],
 ];
 
 let orderLevel2 = [
   [" Shuto"],
   [" Shuto", " OiZuki"],
   [" Shuto", " OiZuki", " MaeGeri"],
-  // [" Shuto", " OiZuki", " MaeGeri", " MaeGeri"],
-  // [" Shuto", " OiZuki", " MaeGeri", " MaeGeri", " Shuto"],
-  // [" Shuto", " OiZuki", " MaeGeri", " MaeGeri", " Shuto", " OiZuki"],
-  // [" Shuto", " OiZuki", " MaeGeri", " MaeGeri", " Shuto", " OiZuki", "OiZuki"],
-  // [
-  //   " Shuto",
-  //   " OiZuki",
-  //   " MaeGeri,
-  //   " MaeGeri",
-  //   " Shuto",
-  //   " OiZuki",
-  //   " OiZuki",
-  //   " MaeGeri",
-  // ],
+  [" Shuto", " OiZuki", " MaeGeri", " MaeGeri"],
+  [" Shuto", " OiZuki", " MaeGeri", " MaeGeri", " Shuto"],
+  [" Shuto", " OiZuki", " MaeGeri", " MaeGeri", " Shuto", " OiZuki"],
+  [" Shuto", " OiZuki", " MaeGeri", " MaeGeri", " Shuto", " OiZuki", " OiZuki"],
+  [
+    " Shuto",
+    " OiZuki",
+    " MaeGeri",
+    " MaeGeri",
+    " Shuto",
+    " OiZuki",
+    " OiZuki",
+    " MaeGeri",
+  ],
 ];
 
 let orderLevel3 = [
   [" MawashiGeri"],
-  // [" MawashiGeri", " OiZuki"],
-  // [" MawashiGeri", " OiZuki", " MaeGeri"],
-  // [" MawashiGeri", " OiZuki", " MaeGeri", " MaeGeri"],
-  // [" MawashiGeri", " OiZuki", " MaeGeri", " MaeGeri", " MawashiGeri"],
-  // [" MawashiGeri", " OiZuki", " MaeGeri", " MaeGeri", " MawashiGeri", " OiZuki"],
-  // [" MawashiGeri", " OiZuki", " MaeGeri", " MaeGeri", " MawashiGeri", " OiZuki", " Shuto"],
-  // [
-  //   " MawashiGeri",
-  //   " OiZuki",
-  //   " MaeGeri",
-  //   " MaeGeri",
-  //   " MawashiGeri",
-  //   " OiZuki",
-  //   " Shuto",
-  //   " MaeGeri",
-  // ],
+  [" MawashiGeri", " OiZuki"],
+  [" MawashiGeri", " OiZuki", " MaeGeri"],
+  [" MawashiGeri", " OiZuki", " MaeGeri", " MaeGeri"],
+  [" MawashiGeri", " OiZuki", " MaeGeri", " MaeGeri", " MawashiGeri"],
+  [" MawashiGeri", " OiZuki", " MaeGeri", " MaeGeri", " MawashiGeri", " OiZuki"],
+  [" MawashiGeri", " OiZuki", " MaeGeri", " MaeGeri", " MawashiGeri", " OiZuki", " Shuto"],
+  [
+    " MawashiGeri",
+    " OiZuki",
+    " MaeGeri",
+    " MaeGeri",
+    " MawashiGeri",
+    " OiZuki",
+    " Shuto",
+    " MaeGeri",
+  ],
 ];
 
 //Player array and index of array
@@ -114,6 +115,7 @@ let orderLine = array[currentIndex];
 easyMode.addEventListener("click", () => {
   console.log("1!");
   document.addEventListener("keydown", keyHandler);
+  btnNoise.play();
   easyMode.classList.toggle("chosen-easy");
   easyMode.classList.remove("heartbeat");
   mediumMode.classList.remove("chosen-medium", "heartbeat");
@@ -127,6 +129,7 @@ easyMode.addEventListener("click", () => {
 mediumMode.addEventListener("click", () => {
   console.log("2!");
   document.addEventListener("keydown", keyHandler);
+  btnNoise.play();
   mediumMode.classList.toggle("chosen-medium");
   mediumMode.classList.remove("heartbeat");
   easyMode.classList.remove("chosen-easy", "heartbeat");
@@ -140,6 +143,7 @@ mediumMode.addEventListener("click", () => {
 hardMode.addEventListener("click", () => {
   console.log("3!");
   document.addEventListener("keydown", keyHandler);
+  btnNoise.play();
   hardMode.classList.toggle("chosen-hard");
   hardMode.classList.remove("heartbeat");
   easyMode.classList.remove("chosen-easy", "heartbeat");
@@ -220,7 +224,7 @@ function playersTurn() {
       "maegeri-color",
       "shuto-color"
     );
-  }, 4000);
+  }, 3000);
 }
 
 //Comparing player's value with orders array
