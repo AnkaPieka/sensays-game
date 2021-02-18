@@ -15,5 +15,6 @@ rulesBtn.addEventListener('click', toggleHidden);
 //
 
 rulesBtn.setTimeout(() => {
+    rulesBtn.classList.remove('slide-in-top')
     rulesBtn.classList.add('heartbeat');
 }, 2000);

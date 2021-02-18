@@ -23,11 +23,11 @@ a {
 }
 
 header {
-    display: flex;
-    flex-wrap: nowrap;
-    align-items: flex-start;
-    justify-content: space-evenly;
-  }
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  justify-content: space-evenly;
+}
 
 .movement.img {
   height: 10em;
@@ -52,7 +52,7 @@ header {
 
 #count {
   font-size: 2.2em;
-  text-shadow: 1px 1px 2px white; 
+  text-shadow: 1px 1px 2px white;
 }
 
 .wrong {
@@ -92,7 +92,7 @@ header {
   height: 100%;
   padding: 27px;
   text-align: center;
-  text-shadow: 1px 1px 2px black; 
+  text-shadow: 1px 1px 2px black;
   display: flex;
   flex-wrap: nowrap;
   flex-direction: column;
@@ -135,12 +135,12 @@ header {
   background-color: black;
   color: white;
   cursor: pointer;
-  text-shadow: 1px 1px 2px black; 
+  text-shadow: 1px 1px 2px black;
 }
 
 .btn.to-main-page:hover {
-    border: 3px solid white;
-    background-color:rgba(0, 0, 0, 0.8);
+  border: 3px solid white;
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 .hard:hover {
@@ -180,12 +180,11 @@ header {
 }
 
 /*RESPONSIVENESS*/
-@media (max-width : 750px){
+@media (max-width: 750px) {
   html {
-    font-size : 10px;
+    font-size: 10px;
     height: 100%;
   }
-
 
   .bubble {
     /* font-size: 5px; */
@@ -200,12 +199,12 @@ header {
   }
 
   .btn.to-main-page {
-    margin : 2.5em 0;
+    margin: 2.5em 0;
   }
 
   #count {
     font-size: 2.5em;
-    text-shadow: 1px 1px 2px white; 
+    text-shadow: 1px 1px 2px white;
   }
 
   #end-screen.active {
@@ -215,7 +214,6 @@ header {
     margin-top: 10px;
   }
 }
-
 
 /*ANIMATIONS*/
 

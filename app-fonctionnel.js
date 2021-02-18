@@ -255,7 +255,7 @@ function rightCmd() {
     bubble.classList.remove("wrong");
     movement.innerHTML = "Well done";
     increaseIndex();
-    playerArray = [];
+    // playerArray = [];
     setTimeout(function () {
       gameLogic();
     }, 1200);
