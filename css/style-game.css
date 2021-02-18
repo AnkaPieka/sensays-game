@@ -37,11 +37,12 @@ header {
   font-size: 50px;
 }
 
+/*BUBBLE*/
 .bubble {
   background: white;
   border: 2px solid black;
-  height: 500px;
-  width: 500px;
+  height: 480px;
+  width: 480px;
   margin: 15px;
   padding: 15px;
   text-align: center;
@@ -51,24 +52,27 @@ header {
 }
 
 .shuto-color {
-  background-color: rgba(102, 204, 102, 0.521);
+  background-color: rgba(66, 221, 66, 0.521);
+  color: white;
+  text-shadow: 1px 1px 1px black;
 }
 
 .oizuki-color{
-  background-color: rgba(236, 77, 77, 0.521) ;
+  background-color: rgba(224, 46, 46, 0.521) ;
+  color: white;
+  text-shadow: 1px 1px 2px black;
 }
 
 .maegeri-color {
-  background-color: rgba(111, 111, 219, 0.521);
+  background-color: rgba(87, 87, 223, 0.521);
+  color: white;
+  text-shadow: 1px 1px 2px black;
 }
 
 .mawashigeri-color {
   background-color: rgba(235, 180, 79, 0.575);
-}
-
-#count {
-  font-size: 2.2em;
-  text-shadow: 1px 1px 2px white;
+  color: white;
+  text-shadow: 1px 1px 2px black;
 }
 
 .wrong {
@@ -85,12 +89,42 @@ header {
   z-index: -1;
 }
 
-.back {
+/*NUMBER OF SERIES*/
+#count {
+  font-size: 2.2em;
+  text-shadow: 1px 1px 2px white;
+}
+
+
+/* .back {
   display: flex;
   flex-direction: row-reverse;
   justify-self: flex-end;
   align-content: flex-end;
+} */
+
+/*CHEAT SHEET*/
+
+#cheat-sheet {
+  font-size: 1.5em;
+  color: white;
+  margin: 0 10px 30px;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 80%;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-evenly;
 }
+
+#cheat-sheet.hidden {
+  visibility: hidden;
+  position: absolute;
+  display: none;
+}
+
+/*SCREEN IF LOOSE*/
 
 #end-screen.hidden {
   position: absolute;
@@ -117,20 +151,7 @@ header {
   margin-top: 20px;
 }
 
-.btn.try-again {
-  background-color: white;
-  color: black;
-  border: 2px solid red;
-  height: 80px;
-  width: 80px;
-  border-radius: 50%;
-  margin: 40px;
-  padding: 5px;
-  font-size: 15px;
-  align-self: center;
-}
-
-.back {
+/* .back {
   margin: 15px;
   padding: 10px;
   border-radius: 50%;
@@ -139,24 +160,21 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-}
+} */
+
+/*ALL BTN STYLE*/
 
 .btn {
   border: solid 1px white;
   height: 80px;
   width: 80px;
-  margin: 10px;
+  margin: 15px;
   padding: 10px;
   border-radius: 50%;
   background-color: black;
   color: white;
   cursor: pointer;
   text-shadow: 1px 1px 2px black;
-}
-
-.btn.to-main-page:hover {
-  border: 3px solid white;
-  background-color: rgba(0, 0, 0, 0.8);
 }
 
 .hard:hover {
@@ -195,6 +213,67 @@ header {
   border: 2px solid red;
 }
 
+.btn.try-again {
+  background-color: white;
+  color: black;
+  border: 2px solid red;
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  margin: 40px;
+  padding: 5px;
+  font-size: 15px;
+  align-self: center;
+}
+
+/*BOTTOM BTN*/
+.btn.bottom {
+  height: 70px;
+  width: 70px;
+  margin: 20px 30px;
+}
+
+.btn.bottom:hover {
+  border: 3px solid white;
+  background-color: rgba(0, 0, 0, 0.8);
+  /* margin : 0 3px; */
+}
+
+.arrowkey-icon {
+  height:30px;
+  width:30px;
+  border-radius: 25%;
+}
+
+.arrowkey-icon.shuto {
+  background-color: rgba(66, 221, 66, 0.521);
+}
+
+.arrowkey-icon.oizuki {
+  background-color: rgba(224, 46, 46, 0.521);
+}
+
+.arrowkey-icon.mawashigeri{
+  background-color: rgba(235, 180, 79, 0.575);
+}
+
+.arrowkey-icon.maegeri {
+  background-color: rgba(87, 87, 223, 0.521);
+}
+
+/*GIFS*/
+
+.sensei-gif {
+  width: 200px;
+  height: auto;
+}
+
+.two-first-level-gif {
+  width: 300px;
+  height: auto;
+}
+
+
 /*RESPONSIVENESS*/
 @media (max-width: 750px) {
   html {
@@ -220,7 +299,7 @@ header {
 
   #count {
     font-size: 2.5em;
-    text-shadow: 1px 1px 2px white;
+    text-shadow: 1px 1px 3px white;
   }
 
   #end-screen.active {
@@ -228,6 +307,10 @@ header {
     height: 80%;
     padding: 3px;
     margin-top: 10px;
+  }
+
+  #cheat-sheet {
+    width: 100%;
   }
 }
 

@@ -9,6 +9,8 @@ let mediumMode = document.querySelector(".btn.medium");
 let hardMode = document.querySelector(".btn.hard");
 let goBack = document.querySelector(".main-page");
 let tryAgain = document.querySelector(".btn.try-again");
+let cheatSheetBtn = document.querySelector(".btn.bottom.cheat-sheet");
+let cheatSheetDiv = document.querySelector("#cheat-sheet");
 
 //Shuto = right arrow;
 // MaeGeri = arrow down;
@@ -81,8 +83,8 @@ let orderLevel2 = [
 
 let orderLevel3 = [
   [" MawashiGeri"],
-  [" MawashiGeri", " OiZuki"],
-  [" MawashiGeri", " OiZuki", " MaeGeri"],
+  // [" MawashiGeri", " OiZuki"],
+  // [" MawashiGeri", " OiZuki", " MaeGeri"],
   // [" MawashiGeri", " OiZuki", " MaeGeri", " MaeGeri"],
   // [" MawashiGeri", " OiZuki", " MaeGeri", " MaeGeri", " MawashiGeri"],
   // [" MawashiGeri", " OiZuki", " MaeGeri", " MaeGeri", " MawashiGeri", " OiZuki"],
@@ -90,7 +92,7 @@ let orderLevel3 = [
   // [
   //   " MawashiGeri",
   //   " OiZuki",
-  //   " MaeGeri,
+  //   " MaeGeri",
   //   " MaeGeri",
   //   " MawashiGeri",
   //   " OiZuki",
@@ -111,40 +113,40 @@ let orderLine = array[currentIndex];
 
 easyMode.addEventListener("click", () => {
   console.log("1!");
-  easyMode.classList.toggle('chosen-easy');
-  easyMode.classList.remove('heartbeat');
-  mediumMode.disabled = true;
-  hardMode.disabled = true;
-  mediumMode.classList.remove('chosen-medium', 'heartbeat');
-  hardMode.classList.remove('chosen-hard', 'heartbeat');
+  document.addEventListener("keydown", keyHandler);
+  easyMode.classList.toggle("chosen-easy");
+  easyMode.classList.remove("heartbeat");
+  mediumMode.classList.remove("chosen-medium", "heartbeat");
+  hardMode.classList.remove("chosen-hard", "heartbeat");
   array = orderLevel1;
   orderLine = array[currentIndex];
+  disableAllLevelBtn();
   resetBubble();
 });
 
 mediumMode.addEventListener("click", () => {
   console.log("2!");
-  mediumMode.classList.toggle('chosen-medium');
-  mediumMode.classList.remove('heartbeat');
-  easyMode.disabled = true;
-  hardMode.disabled = true;
-  easyMode.classList.remove('chosen-easy', 'heartbeat');
-  hardMode.classList.remove('chosen-hard', 'heartbeat');
+  document.addEventListener("keydown", keyHandler);
+  mediumMode.classList.toggle("chosen-medium");
+  mediumMode.classList.remove("heartbeat");
+  easyMode.classList.remove("chosen-easy", "heartbeat");
+  hardMode.classList.remove("chosen-hard", "heartbeat");
   array = orderLevel2;
   orderLine = array[currentIndex];
+  disableAllLevelBtn();
   resetBubble();
 });
 
 hardMode.addEventListener("click", () => {
   console.log("3!");
-  hardMode.classList.toggle('chosen-hard');
-  hardMode.classList.remove('heartbeat');
-  easyMode.disabled = true;
-  mediumMode.disabled = true;
-  easyMode.classList.remove('chosen-easy', 'heartbeat');
-  mediumMode.classList.remove('chosen-medium', 'heartbeat');
+  document.addEventListener("keydown", keyHandler);
+  hardMode.classList.toggle("chosen-hard");
+  hardMode.classList.remove("heartbeat");
+  easyMode.classList.remove("chosen-easy", "heartbeat");
+  mediumMode.classList.remove("chosen-medium", "heartbeat");
   array = orderLevel3;
   orderLine = array[currentIndex];
+  disableAllLevelBtn();
   resetBubble();
 });
 
@@ -152,13 +154,22 @@ tryAgain.addEventListener("click", () => {
   easyMode.disabled = false;
   mediumMode.disabled = false;
   hardMode.disabled = false;
-  easyMode.classList.add('heartbeat');
-  mediumMode.classList.add('heartbeat');
-  hardMode.classList.add('heartbeat');
+  easyMode.classList.add("heartbeat");
+  mediumMode.classList.add("heartbeat");
+  hardMode.classList.add("heartbeat");
   bubble.classList.remove("wrong");
   endScreen.classList.add("hidden");
-  bubble.classList.remove("oizuki-color","mawashigeri-color", "maegeri-color", "shuto-color");
+  bubble.classList.remove(
+    "oizuki-color",
+    "mawashigeri-color",
+    "maegeri-color",
+    "shuto-color"
+  );
   resetBubble();
+});
+
+cheatSheetBtn.addEventListener("mouseover", () => {
+  cheatSheetDiv.classList.toggle("hidden");
 });
 
 function resetBubble() {
@@ -171,6 +182,12 @@ function resetBubble() {
   score = 0;
   count.innerHTML = `${Number(score)}`;
   console.log(playerArray);
+}
+
+function disableAllLevelBtn() {
+  mediumMode.disabled = true;
+  easyMode.disabled = true;
+  hardMode.disabled = true;
 }
 
 
@@ -191,14 +208,18 @@ function gameLogic() {
   playersTurn();
 }
 
-
 //Pushing the entered value in players array
 
 let playersTurnTimeout;
 function playersTurn() {
   playersTurnTimeout = setTimeout(function () {
     compareOrders();
-    bubble.classList.remove("oizuki-color","mawashigeri-color", "maegeri-color", "shuto-color");
+    bubble.classList.remove(
+      "oizuki-color",
+      "mawashigeri-color",
+      "maegeri-color",
+      "shuto-color"
+    );
   }, 4000);
 }
 
@@ -209,19 +230,27 @@ function keyHandler(press) {
   if (keyName === "ArrowRight") {
     playerArray.push(" Shuto");
     bubble.classList.add("shuto-color");
-    bubble.classList.remove("oizuki-color","mawashigeri-color", "maegeri-color");
+    bubble.classList.remove(
+      "oizuki-color",
+      "mawashigeri-color",
+      "maegeri-color"
+    );
   } else if (keyName === "ArrowUp") {
     playerArray.push(" OiZuki");
     bubble.classList.add("oizuki-color");
-    bubble.classList.remove("shuto-color","mawashigeri-color", "maegeri-color");
+    bubble.classList.remove(
+      "shuto-color",
+      "mawashigeri-color",
+      "maegeri-color"
+    );
   } else if (keyName === "ArrowLeft") {
     playerArray.push(" MawashiGeri");
     bubble.classList.add("mawashigeri-color");
-    bubble.classList.remove("oizuki-color","shuto-color", "maegeri-color");
+    bubble.classList.remove("oizuki-color", "shuto-color", "maegeri-color");
   } else if (keyName === "ArrowDown") {
     playerArray.push(" MaeGeri");
     bubble.classList.add("maegeri-color");
-    bubble.classList.remove("oizuki-color","mawashigeri-color", "shuto-color");
+    bubble.classList.remove("oizuki-color", "mawashigeri-color", "shuto-color");
   } else if (keyName === "Enter") {
     return;
   } else {
@@ -229,8 +258,6 @@ function keyHandler(press) {
   }
   // console.log(playerArray);
 }
-
-document.addEventListener("keydown", keyHandler);
 
 // utiliser loop OU HOF pour gérer ce point ... quand tu as du temps
 function compareOrders() {
@@ -255,25 +282,34 @@ function wrongCmd() {
 }
 
 function rightCmd() {
-  if (orderLine.length !== orderLevel1.length) {
+  if (orderLine.length !== array.length) {
     bubble.classList.remove("wrong");
     movement.innerHTML = "Well done";
     increaseIndex();
     playerArray = [];
     setTimeout(function () {
       gameLogic();
-    }, 1200);
+    }, 1000);
   } else if (
-    orderLine.length === orderLevel1.length &&
+    orderLine.length === array.length &&
     JSON.stringify(array) === JSON.stringify(orderLevel3)
   ) {
-    movement.innerHTML = `I must admit, I'm impressed. I allow you to become my student... I guess.`;
+    movement.innerHTML = `I must admit, I'm impressed.</br>
+    <img
+    class="sensei-gif"
+    src="./img/sensei.gif"
+    alt="karate fail gif"/> </br>
+    I allow you to become my student... I guess.`;
   } else {
-    movement.innerHTML = `You won...But maybe you were lucky. Try a higher difficulty if you dare.`;
+    movement.innerHTML = `You won...
+    <img
+    class="two-first-level-gif"
+    src="./img/uwon.gif"
+    alt="karate fail gif"/></br>
+    But maybe you were lucky. Try a higher difficulty if you dare.`;
     return;
   }
 }
-
 
 //Function to increase index at each turn
 

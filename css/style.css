@@ -107,12 +107,28 @@ footer {
   flex-wrap: nowrap;
 }
 
-.move-icon {
+.arrowkey-icon {
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 25%;
   height: 50px;
   margin: 20px;
   padding: 5px;
+}
+
+.arrowkey-icon.shuto {
+  background-color: rgba(66, 221, 66, 0.521);
+}
+
+.arrowkey-icon.oizuki {
+  background-color: rgba(224, 46, 46, 0.521);
+}
+
+.arrowkey-icon.mawashigeri{
+  background-color: rgba(235, 180, 79, 0.575);
+}
+
+.arrowkey-icon.maegeri {
+  background-color: rgba(87, 87, 223, 0.521);
 }
 
 #rules {
