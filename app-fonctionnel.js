@@ -19,7 +19,7 @@ let tryAgain = document.querySelector(".btn.try-again");
 
 function gameStart() {
   document.body.onkeyup = function (press) {
-    if (press.keyCode === 13) {
+    if (press.keyCode == 13) {
       console.log("Game has started");
       setTimeout(function () {
         gameLogic();
@@ -111,12 +111,12 @@ let orderLine = array[currentIndex];
 
 easyMode.addEventListener("click", () => {
   console.log("1!");
-  easyMode.classList.add("chosen-easy");
-  easyMode.classList.remove("heartbeat");
+  easyMode.classList.toggle('chosen-easy');
+  easyMode.classList.remove('heartbeat');
   mediumMode.disabled = true;
   hardMode.disabled = true;
-  mediumMode.classList.remove("chosen-medium", "heartbeat");
-  hardMode.classList.remove("chosen-hard", "heartbeat");
+  mediumMode.classList.remove('chosen-medium', 'heartbeat');
+  hardMode.classList.remove('chosen-hard', 'heartbeat');
   array = orderLevel1;
   orderLine = array[currentIndex];
   resetBubble();
@@ -124,12 +124,12 @@ easyMode.addEventListener("click", () => {
 
 mediumMode.addEventListener("click", () => {
   console.log("2!");
-  mediumMode.classList.add("chosen-medium");
-  mediumMode.classList.remove("heartbeat");
+  mediumMode.classList.toggle('chosen-medium');
+  mediumMode.classList.remove('heartbeat');
   easyMode.disabled = true;
   hardMode.disabled = true;
-  easyMode.classList.remove("chosen-easy", "heartbeat");
-  hardMode.classList.remove("chosen-hard", "heartbeat");
+  easyMode.classList.remove('chosen-easy', 'heartbeat');
+  hardMode.classList.remove('chosen-hard', 'heartbeat');
   array = orderLevel2;
   orderLine = array[currentIndex];
   resetBubble();
@@ -137,12 +137,12 @@ mediumMode.addEventListener("click", () => {
 
 hardMode.addEventListener("click", () => {
   console.log("3!");
-  hardMode.classList.add("chosen-hard");
-  hardMode.classList.remove("heartbeat");
+  hardMode.classList.toggle('chosen-hard');
+  hardMode.classList.remove('heartbeat');
   easyMode.disabled = true;
   mediumMode.disabled = true;
-  easyMode.classList.remove("chosen-easy", "heartbeat");
-  mediumMode.classList.remove("chosen-medium", "heartbeat");
+  easyMode.classList.remove('chosen-easy', 'heartbeat');
+  mediumMode.classList.remove('chosen-medium', 'heartbeat');
   array = orderLevel3;
   orderLine = array[currentIndex];
   resetBubble();
@@ -152,11 +152,12 @@ tryAgain.addEventListener("click", () => {
   easyMode.disabled = false;
   mediumMode.disabled = false;
   hardMode.disabled = false;
-  easyMode.classList.add("heartbeat");
-  mediumMode.classList.add("heartbeat");
-  hardMode.classList.add("heartbeat");
+  easyMode.classList.add('heartbeat');
+  mediumMode.classList.add('heartbeat');
+  hardMode.classList.add('heartbeat');
   bubble.classList.remove("wrong");
   endScreen.classList.add("hidden");
+  bubble.classList.remove("oizuki-color","mawashigeri-color", "maegeri-color", "shuto-color");
   resetBubble();
 });
 
@@ -166,88 +167,91 @@ function resetBubble() {
   bubble.classList.remove("wrong");
   playerArray = [];
   currentIndex = 0;
-  movement.innerHTML = "Press ENTER when you're ready to show your skills to Ishikawa.";
+  movement.innerHTML = "Press ENTER when you're ready to show your skills.";
   score = 0;
   count.innerHTML = `${Number(score)}`;
-  // console.log(playerArray);
+  console.log(playerArray);
 }
 
-//Function game logic : starts the game and implement the messages to display at each turn
-let alertTimeRemaining 
+
+//Function game logic
+
 function gameLogic() {
   if (array.length === 0) {
     movement.innerHTML = `CHOOSE. A. LEVEL !`;
     return;
   }
   movement.innerHTML = `${orderLine} !`;
-  // scoreBoard();
+  scoreBoard();
 
-  alertTimeRemaining= setTimeout(function () {
+  setTimeout(function () {
     movement.innerHTML = `${orderLine} ! <br>Quick...`;
   }, 2000);
 
   playersTurn();
 }
 
-//Opening a timed period for the player to enter its cmd
+
+//Pushing the entered value in players array
 
 let playersTurnTimeout;
 function playersTurn() {
-  document.addEventListener("keydown", keyHandler);
   playersTurnTimeout = setTimeout(function () {
-    console.log('Time is up')
-    wrongCmd();
+    compareOrders();
+    bubble.classList.remove("oizuki-color","mawashigeri-color", "maegeri-color", "shuto-color");
   }, 4000);
 }
 
-//Pushing player's value to its array and with orders array
+//Comparing player's value with orders array
 
 function keyHandler(press) {
   const keyName = press.key;
   if (keyName === "ArrowRight") {
     playerArray.push(" Shuto");
+    bubble.classList.add("shuto-color");
+    bubble.classList.remove("oizuki-color","mawashigeri-color", "maegeri-color");
   } else if (keyName === "ArrowUp") {
     playerArray.push(" OiZuki");
+    bubble.classList.add("oizuki-color");
+    bubble.classList.remove("shuto-color","mawashigeri-color", "maegeri-color");
   } else if (keyName === "ArrowLeft") {
     playerArray.push(" MawashiGeri");
+    bubble.classList.add("mawashigeri-color");
+    bubble.classList.remove("oizuki-color","shuto-color", "maegeri-color");
   } else if (keyName === "ArrowDown") {
     playerArray.push(" MaeGeri");
+    bubble.classList.add("maegeri-color");
+    bubble.classList.remove("oizuki-color","mawashigeri-color", "shuto-color");
   } else if (keyName === "Enter") {
     return;
   } else {
     movement.innerHTML = "Not a move";
   }
-  compareOrders();
+  // console.log(playerArray);
 }
 
-//Comparing the entered key with the orders one
-//utiliser loop OU HOF pour gérer ce point ... quand tu as du temps//
+document.addEventListener("keydown", keyHandler);
+
+// utiliser loop OU HOF pour gérer ce point ... quand tu as du temps
 function compareOrders() {
   console.log(playerArray);
   if (JSON.stringify(playerArray) === JSON.stringify(orderLine)) {
-    console.log(playerArray);
-    clearTimeout(playersTurnTimeout);
-    clearTimeout(alertTimeRemaining);
     rightCmd();
-    scoreBoard();
   } else {
-    console.log("---" + playerArray);
     wrongCmd();
   }
 }
 
-//Functions for right and wrong cmds (if wrong, open the GAME OVER)
+//Functions for right and wrong cmds
 let openEndScreen;
 function wrongCmd() {
-  clearTimeout(playersTurnTimeout);
-  clearTimeout(alertTimeRemaining);
   movement.innerHTML = "NO !";
   bubble.classList.add("wrong");
   playerArray = [];
   openEndScreen = setTimeout(function () {
     endScreen.classList.remove("hidden");
     endScreen.classList.add("active");
-  }, 2000);
+  }, 1000);
 }
 
 function rightCmd() {
@@ -255,7 +259,7 @@ function rightCmd() {
     bubble.classList.remove("wrong");
     movement.innerHTML = "Well done";
     increaseIndex();
-    // playerArray = [];
+    playerArray = [];
     setTimeout(function () {
       gameLogic();
     }, 1200);
@@ -265,18 +269,20 @@ function rightCmd() {
   ) {
     movement.innerHTML = `I must admit, I'm impressed. I allow you to become my student... I guess.`;
   } else {
-    movement.innerHTML = `You won. Try a higher difficulty if you dare.`;
+    movement.innerHTML = `You won...But maybe you were lucky. Try a higher difficulty if you dare.`;
     return;
   }
 }
 
-//IF RIGHT : increase index  and increase scoreBoard by 1
+
+//Function to increase index at each turn
 
 function increaseIndex() {
   currentIndex++;
   orderLine = array[currentIndex];
 }
 
+//Score board
 let score = 0;
 function scoreBoard() {
   score += +1;

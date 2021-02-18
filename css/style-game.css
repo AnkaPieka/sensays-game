@@ -50,6 +50,22 @@ header {
   align-items: center;
 }
 
+.shuto-color {
+  background-color: rgba(102, 204, 102, 0.521);
+}
+
+.oizuki-color{
+  background-color: rgba(236, 77, 77, 0.521) ;
+}
+
+.maegeri-color {
+  background-color: rgba(111, 111, 219, 0.521);
+}
+
+.mawashigeri-color {
+  background-color: rgba(235, 180, 79, 0.575);
+}
+
 #count {
   font-size: 2.2em;
   text-shadow: 1px 1px 2px white;
