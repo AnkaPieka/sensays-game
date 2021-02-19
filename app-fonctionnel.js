@@ -318,6 +318,8 @@ function rightCmd() {
     src="./img/sensei.gif"
     alt="karate fail gif"/> </br>
     I allow you to become my student... I guess.`;
+    array = [];
+    return;
   } else {
     movement.innerHTML = `You won...
     <img
@@ -325,6 +327,7 @@ function rightCmd() {
     src="./img/uwon.gif"
     alt="karate fail gif"/></br>
     But maybe you were lucky. Try a higher difficulty if you dare.`;
+    array = [];
     return;
   }
 }
